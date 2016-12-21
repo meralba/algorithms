@@ -1,32 +1,35 @@
-// Example program
+/** Función secuencial para la busqueda binaria de un elemento en un vector
+  * @author Mer Alba
+  */
 #include <iostream>
 
 using namespace std;
-/** Devuelve el �ndice en el que se encuentra el elemento a buscar. Si devuelve -1 es que dicho elemento
+/** Devuelve el índice en el que se encuentra el elemento a buscar. Si devuelve -1 es que dicho elemento
  * no se encuentra en el vector
  * @pre El vector tiene que estar ordenado de menor a mayor
- * @param n
- * @param tam
- * @param dato
+ * @param n Vector en el que se va a buscar
+ * @param tam Tamaño del vector
+ * @param dato Dato que se va a buscar en el vector
+ * @return indice Indice dónde se ha encontrado el elemento buscado
  **/
 int busquedaBinaria(int *n, int tam, int dato){
-    bool encontrado=false;
-    int centro;
-    int inf=0;
-    int sup=tam-1;
-    int indice=-1;
-    while(inf<=sup && !encontrado){
-        centro=((sup-inf)/2)+inf;
-        if(n[centro]==dato){
+    bool encontrado=false;  //Variable que controla si el elemento ha sido encontrado o no (vale con la variable indice) 
+    int centro;     //Elemento pivote. Siempre será el centro del vector
+    int inf=0;      //Elemento inferior del intervalo inspeccionado
+    int sup=tam-1;  //Elemento superior del intervalo inspeccionado
+    int indice=-1;  
+    while(inf<=sup && !encontrado){     // indice==-1
+        centro=((sup-inf)/2)+inf;   //Cálculo del centro del intervalo
+        if(n[centro]==dato){    //Si el elemnto pivote es el mismo que el elemento buscado se devuelve el índice de este
             indice=centro;
             encontrado=true;
         }
-        else{
-            if(dato<n[centro]){
-                sup=centro-1;
+        else{       //Si no se modifican los límites para la próxima iteración
+            if(dato<n[centro]){     //Si el dato es menor al elemento pivote
+                sup=centro-1;       //El límite superior se pone a la izquierda del pivote
             }
-            else{
-                inf=centro+1;
+            else{           //Si no
+                inf=centro+1;       //El limite inferior se situa al lado derecho del pivote
             }
         }
     }
