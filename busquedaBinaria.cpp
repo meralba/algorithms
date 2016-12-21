@@ -29,7 +29,7 @@ int busquedaBinaria(int *n, int tam, int dato){
                 sup=centro-1;       //El límite superior se pone a la izquierda del pivote
             }
             else{           //Si no
-                inf=centro+1;       //El limite inferior se situa al lado derecho del pivote
+                inf=centro+1;       //El limite inferior se situa al lado derecho del pivote 
             }
         }
     }
